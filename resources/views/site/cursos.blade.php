@@ -25,17 +25,34 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link fs-5" href="{{route('site.index')}}">Home</a>
+                                <a class="nav-link fs-5 active" href="{{route('site.index')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link fs-5 active" href="{{route('site.cursos')}}">Cursos</a>
+                                <a class="nav-link fs-5" href="{{route('site.cursos')}}">Cursos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link fs-5" href="{{route('site.departamentos')}}">Departamentos</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item me-5">
                                 <a class="nav-link fs-5" href="{{route('site.contato')}}">Contato</a>
                             </li>
+                            @if (Route::has('login'))
+                                @auth
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5 active" href="{{ url('dashboard') }}">Dashboard</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link fs-5" href="{{route('login')}}">Log in</a>
+                                    </li>
+
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link fs-5" href="{{route('register')}}">Registrar</a>
+                                        </li>
+                                    @endif
+                                @endauth
+                            @endif
                         </ul>
                     </div>
                 </div>
